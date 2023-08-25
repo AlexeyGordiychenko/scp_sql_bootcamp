@@ -47,5 +47,7 @@ correct_toures AS (
             FROM toures
         )
 )
-SELECT *
-FROM correct_toures;
+SELECT total_cost, concat('{', tour, ',', next, '}') AS tour
+FROM correct_toures
+WHERE total_cost = (SELECT MIN(total_cost) from correct_toures)
+ORDER BY total_cost, tour;
