@@ -16,6 +16,7 @@ VALUES ('a', 'b', 10),
     ('d', 'b', 25),
     ('c', 'd', 30),
     ('d', 'c', 30);
+CREATE VIEW v_tsp AS
 WITH RECURSIVE toures AS (
     --first query is the starting point in the city 'a'
     SELECT point1 AS tour,
@@ -48,6 +49,9 @@ correct_toures AS (
         )
 )
 SELECT total_cost, concat('{', tour, ',', next, '}') AS tour
-FROM correct_toures
-WHERE total_cost = (SELECT MIN(total_cost) from correct_toures)
+FROM correct_toures;
+
+SELECT *
+FROM v_tsp
+WHERE total_cost = (SELECT MIN(total_cost) from v_tsp)
 ORDER BY total_cost, tour;
