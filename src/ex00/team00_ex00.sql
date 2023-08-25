@@ -18,7 +18,6 @@ VALUES ('a', 'b', 10),
     ('d', 'c', 30);
 
 
-DROP VIEW v_tsp;
 CREATE VIEW v_tsp AS
 WITH RECURSIVE toures AS (
     --first query is the starting point in the city 'a'
